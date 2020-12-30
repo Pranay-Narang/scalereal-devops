@@ -19,5 +19,24 @@ exports.handler = async (event) => {
         };
         return response;
 
+    } else if (requestMethod == "POST") {
+        var { id, name, age } = JSON.parse(event.body)
+
+        const params = {
+            TableName: tableName,
+            Item: {
+                id: id,
+                name: name,
+                age: age
+            }
+        };
+
+        const data = await documentClient.put(params).promise();
+
+        const response = {
+            statusCode: 200,
+            body: "Item Added Successfully"
+        }
+        return response;
     }
 };
