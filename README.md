@@ -22,9 +22,14 @@ $ export AWS_SESSION_TOKEN=<session_token> [If Applicable]
 $ terraform plan
 ```
 
-- ### Bring up infrasturcture
+- ### Bring up infrastructure
 ```bash
 $ terraform apply
+```
+
+### Destory Infrastructure (optional)
+```bash
+$ terraform destroy
 ```
 
 ## Verify
