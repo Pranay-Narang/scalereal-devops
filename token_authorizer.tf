@@ -19,7 +19,7 @@ EOF
 
 resource "aws_lambda_function" "token_authorizer" {
   function_name = "token_authorizer"
-  filename      = "lambda/token-authorizer.zip"
+  filename      = "lambda/artifacts/token-authorizer.zip"
   role          = aws_iam_role.lambda_token_execution_role.arn
   handler       = "token_authorizer.handler"
   runtime       = "nodejs12.x"

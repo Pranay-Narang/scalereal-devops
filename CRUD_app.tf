@@ -42,7 +42,7 @@ resource "aws_iam_policy_attachment" "dynamodb_access_policy_attachment" {
 
 resource "aws_lambda_function" "CRUD_app" {
   function_name = "CRUD_app"
-  filename      = "lambda/CRUD-app.zip"
+  filename      = "lambda/artifacts/CRUD-app.zip"
   role          = aws_iam_role.lambda_CRUD_execution_role.arn
   handler       = "CRUD_dynamodb.handler"
   runtime       = "nodejs12.x"

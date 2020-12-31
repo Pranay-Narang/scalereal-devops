@@ -55,7 +55,7 @@ resource "aws_lambda_permission" "allow_bucket" {
 
 resource "aws_lambda_function" "csv_scanner" {
   function_name = "csv_scanner"
-  filename      = "lambda/csv-scanner.zip"
+  filename      = "lambda/artifacts/csv-scanner.zip"
   role          = aws_iam_role.lambda_iam_role.arn
   handler       = "csv_to_dynamodb.lambda_handler"
   runtime       = "python3.8"
