@@ -26,11 +26,12 @@ resource "aws_lambda_function" "token_authorizer" {
 }
 
 resource "aws_api_gateway_authorizer" "lambda_auth" {
-  name                   = "lambda_auth"
-  rest_api_id            = aws_api_gateway_rest_api.CRUD_gateway.id
-  authorizer_uri         = aws_lambda_function.token_authorizer.invoke_arn
-  authorizer_credentials = aws_iam_role.gateway_invocation_role.arn
-  identity_source = "method.request.header.authorizationToken"
+  name                             = "lambda_auth"
+  rest_api_id                      = aws_api_gateway_rest_api.CRUD_gateway.id
+  authorizer_uri                   = aws_lambda_function.token_authorizer.invoke_arn
+  authorizer_credentials           = aws_iam_role.gateway_invocation_role.arn
+  identity_source                  = "method.request.header.authorizationToken"
+  authorizer_result_ttl_in_seconds = 0
 }
 
 resource "aws_iam_role" "gateway_invocation_role" {
