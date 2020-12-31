@@ -5,6 +5,14 @@ terraform {
       version = "~> 3.0"
     }
   }
+  backend "s3" {
+    bucket = "remote-tf-backend"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+variable "aws_region" {
 }
 
 provider "aws" {
@@ -12,5 +20,5 @@ provider "aws" {
   # * AWS_ACCESS_KEY_ID (required)
   # * AWS_SECRET_ACCESS_KEY (required)
   # * AWS_SESSION_TOKEN (only if applicable)
-  region = "us-east-1"
+  region = var.aws_region
 }
